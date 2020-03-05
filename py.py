@@ -3,6 +3,8 @@ import logging
 import time
 import random
 import datetime
+# tem um arquivo twitterauth.py na raiz com as variaveis contendo as credenciais de autenticacao. Ele ta no gitignore tambem.
+import twitterauth
 
 bcw = {
     1: "PERGUNTA 1. Qual é o fim principal do homem?\n\nRESPOSTA. O fim principal do homem é glorificar a Deus, e gozá-lo para sempre.\n\n\nReferências: Rm 11.36; 1Co 10.31; Sl 73.25-26; Is 43.7; Rm 14.7-8; Ef 1.5-6; Is 60.21; 61.3.",
@@ -504,8 +506,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 
-auth = tweepy.OAuthHandler(auth1, auth2)
-auth.set_access_token(token1, token2)
+auth = tweepy.OAuthHandler(twitterauth.auth1, twitterauth.auth2)
+auth.set_access_token(twitterauth.token1, twitterauth.token2)
 
 api = tweepy.API(auth, wait_on_rate_limit=True,
     wait_on_rate_limit_notify=True)
